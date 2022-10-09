@@ -61,6 +61,7 @@ const BB_COUNTRY = {
 const BB_REGION = {};
 
 let DATA = {};
+let CHECKING_API = false;
 
 const load = () => {
 	// default vals
@@ -68,7 +69,6 @@ const load = () => {
 		round: 0,
 		round_started: false,
 		game_finished: false,
-		checking_api: false,
 		last_guess: [0, 0],
 		game_score: [],
 		game_score_total: 0,
@@ -82,7 +82,6 @@ const load = () => {
 		data.round = 0;
 		data.round_started = false;
 		data.game_finished = false;
-		data.checking_api = false;
 
 		// combine with default vals
 		Object.assign(DATA, data);
@@ -153,7 +152,7 @@ const updateRoundPanel = () => {
 
 // show the debug table on the results screen
 const updateSummaryPanel = () => {
-	if(DATA.checking_api) return;
+	if(CHECKING_API) return;
 
 	calcTotalScore();
 }
@@ -207,64 +206,82 @@ const calcTotalScore = () => {
 	let scoreRegion = 5000 * RATIO_REGION * data.scoreRegion || 0;
 
 	let total = Math.round(scoreGeo + scoreCountry + scoreRegion);
-	DATA.game_score[DATA.round] = total;
+	DATA.game_score[DATA.round-1] = total;
 	DATA.game_score_total = DATA.game_score.reduce((a,b) => a+=b);
 	save();
 
 	if(!document.getElementById('scoring-redux-debug')) {
 		let debug = document.createElement('div');
 		debug.id = 'scoring-redux-debug';
-		debug.style.padding = '5px';
-		debug.style.background = 'rgba(0,0,0,0.9)';
 		debug.style.color = '#fff';
 		debug.style.fontFamily = 'monospace';
 		debug.style.fontSize = '14px';
 		debug.style.position = 'absolute';
 		debug.style.zIndex = '999999';
-		debug.style.top = '10px';
-		debug.style.left = '10px';
+		debug.style.top = '5px';
+		debug.style.left = '5px';
+		debug.style.display = 'flex';
+		debug.style.flexDirection = 'column';
+		debug.style.alignItems = 'flex-start';
 		document.body.append(debug);
 	}
 
 	let debug = document.getElementById('scoring-redux-debug');
+	let roundScoreRows = ``;
+	console.log(DATA)
+	DATA.game_score.forEach((s, i) => {
+		roundScoreRows += `<tr>
+			<td>Round ${i+1}</td>
+			<td>${s} pts</td>
+		</tr>`
+	});
+
 	debug.innerHTML = `
-		<table cellpadding="4" border="1" borderColor="#666">
-			<tr>
-				<td><strong>Type</strong></td>
-				<td style="text-align:right"><strong>Amount</strong></td>
-				<td style="text-align:right"><strong>Proximity</strong></td>
-				<td style="text-align:right"><strong>Ratio</strong></td>
-				<td><strong>Guess Location</strong></td>
-				<td><strong>Correct Location</strong></td>
-				<td style="text-align:right"><strong>Score</strong></td>
-			</tr>
-			<tr>
-				<td>GeoGuessr Score</td>
-				<td style="text-align:right">${Math.round(5000 * data.scoreGeoguessr)}</td>
-				<td style="text-align:right">${Math.round(data.scoreGeoguessr * 100)}%</td>
-				<td style="text-align:right">${RATIO_GEOGUESSR.toFixed(2)}</td>
-				<td>N/A</td>
-				<td>N/A</td>
-				<td style="text-align:right">${Math.round(5000 * data.scoreGeoguessr * RATIO_GEOGUESSR)}</td>
-			</tr>
-			<tr>
-				<td>Country Score</td>
-				<td style="text-align:right">${Math.round(5000 * data.scoreCountry)}</td>
-				<td style="text-align:right">${Math.round(data.scoreCountry * 100)}%</td>
-				<td style="text-align:right">${RATIO_COUNTRY.toFixed(2)}</td>
-				<td style="color: ${data.guessCountry == data.targetCountry ? '#8f8' : '#f88'}">${data.guessCountry}</td>
-				<td style="color: ${data.guessCountry == data.targetCountry ? '#8f8' : '#f88'}">${data.targetCountry}</td>
-				<td style="text-align:right">${Math.round(5000 * data.scoreCountry * RATIO_COUNTRY)}</td>
-			</tr>
-			<tr>
-				<td colspan="7" style="text-align:right"><strong>Round Score Total: ${total}</strong></td>
-			</tr>
-			<tr>
-				<td colspan="7" style="text-align:right"><strong>Game Score Total: ${DATA.game_score_total}</strong></td>
-			</tr>
-		</table>
+		<div style="padding:5px; background:rgba(0,0,0,0.9); margin:5px; flex: 0 0 auto;">
+			<table cellpadding="4" border="1" borderColor="#666">
+				<tr>
+					<td><strong>Type</strong></td>
+					<td style="text-align:right"><strong>Amount</strong></td>
+					<td style="text-align:right"><strong>Proximity</strong></td>
+					<td style="text-align:right"><strong>Ratio</strong></td>
+					<td><strong>Guess Location</strong></td>
+					<td><strong>Correct Location</strong></td>
+					<td style="text-align:right"><strong>Score</strong></td>
+				</tr>
+				<tr>
+					<td>GeoGuessr Score</td>
+					<td style="text-align:right">${Math.round(5000 * data.scoreGeoguessr)}</td>
+					<td style="text-align:right">${Math.round(data.scoreGeoguessr * 100)}%</td>
+					<td style="text-align:right">${RATIO_GEOGUESSR.toFixed(2)}</td>
+					<td>N/A</td>
+					<td>N/A</td>
+					<td style="text-align:right">${Math.round(5000 * data.scoreGeoguessr * RATIO_GEOGUESSR)}</td>
+				</tr>
+				<tr>
+					<td>Country Score</td>
+					<td style="text-align:right">${Math.round(5000 * data.scoreCountry)}</td>
+					<td style="text-align:right">${Math.round(data.scoreCountry * 100)}%</td>
+					<td style="text-align:right">${RATIO_COUNTRY.toFixed(2)}</td>
+					<td style="color: ${data.guessCountry == data.targetCountry ? '#8f8' : '#f88'}">${data.guessCountry}</td>
+					<td style="color: ${data.guessCountry == data.targetCountry ? '#8f8' : '#f88'}">${data.targetCountry}</td>
+					<td style="text-align:right">${Math.round(5000 * data.scoreCountry * RATIO_COUNTRY)}</td>
+				</tr>
+				<tr>
+					<td colspan="7" style="text-align:right"><strong>Round Score: ${total}</strong></td>
+				</tr>
+			</table>
+		</div>
+
+		<div style="padding:5px; background:rgba(0,0,0,0.9); margin:5px; flex: 0 0 auto;">
+			<table cellpadding="4" border="1" borderColor="#666">
+				${roundScoreRows}
+				<tr>
+					<td colspan="2" style="text-align:right"><strong>Game Score: ${DATA.game_score_total}</strong></td>
+				</tr>
+			</table>
+		</div>
 	`;
-	debug.style.display = 'block';
+	debug.style.display = 'flex';
 
 	return total;
 }
@@ -317,7 +334,7 @@ const startRound = () => {
 
 const stopRound = async () => {
 	DATA.round_started = false;
-	DATA.checking_api = true;
+	CHECKING_API = true;
 	updatePanels();
 
 	// get current game data from GeoGuessr API
@@ -330,7 +347,7 @@ const stopRound = async () => {
 
 	// if we have already gotten the data for these coords, just return
 	if (guess[0] == DATA.last_guess[0] && guess[1] == DATA.last_guess[1]) {
-		DATA.checking_api = false;
+		CHECKING_API = false;
 		updatePanels();
 		return;
 	}
@@ -379,7 +396,7 @@ const stopRound = async () => {
 	// 	scoreData.scoreRegion = distancePercentage(guess, target, bb);
 	// }
 
-	DATA.checking_api = false;
+	CHECKING_API = false;
 	DATA.score_data = scoreData;
 	save();
 
