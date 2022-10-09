@@ -8,8 +8,8 @@
 // @grant        none
 // @copyright    2022, miraclewhips (https://github.com/miraclewhips)
 // @license      MIT
-// @downloadURL    https://github.com/miraclewhips/geoguessr-userscripts/raw/master/geoguessr-scoring-redux.user.js
-// @updateURL    https://github.com/miraclewhips/geoguessr-userscripts/raw/master/geoguessr-scoring-redux.user.js
+// @downloadURL    https://github.com/miraclewhips/geoguessr-score-modifier/raw/master/geoguessr-score-modifier.user.js
+// @updateURL    https://github.com/miraclewhips/geoguessr-score-modifier/raw/master/geoguessr-score-modifier.user.js
 // ==/UserScript==
 
 
