@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         GeoGuessr Score Modifier
 // @description  Adds a new scoring system that rewards guessing in the right regions/states of countries
-// @version      0.1.2
+// @version      0.1.3
 // @author       miraclewhips
 // @match        *://*.geoguessr.com/*
 // @icon         https://www.google.com/s2/favicons?domain=geoguessr.com
@@ -23,8 +23,7 @@ const COUNTRY_DATA = {
 		 "south": 42.42848713,
 		 "west": 1.409309467,
 		 "east": 1.786015588,
-		 "land_area": 468,
-		 "ratio": 0.136999034
+		 "land_area": 468
 	},
 	"ae": {
 		 "name": "United Arab Emirates",
@@ -32,8 +31,7 @@ const COUNTRY_DATA = {
 		 "south": 24.74174436,
 		 "west": 54.9896658,
 		 "east": 56.36361834,
-		 "land_area": 83600,
-		 "ratio": 0.4655160149
+		 "land_area": 83600
 	},
 	"al": {
 		 "name": "Albania",
@@ -41,8 +39,7 @@ const COUNTRY_DATA = {
 		 "south": 39.64588744,
 		 "west": 19.30000333,
 		 "east": 21.05278228,
-		 "land_area": 27398,
-		 "ratio": 0.3783855797
+		 "land_area": 27398
 	},
 	"ar": {
 		 "name": "Argentina",
@@ -50,8 +47,7 @@ const COUNTRY_DATA = {
 		 "south": -55.05164071,
 		 "west": -73.55933666,
 		 "east": -53.64156954,
-		 "land_area": 2736690,
-		 "ratio": 0.7961822049
+		 "land_area": 2736690
 	},
 	"at": {
 		 "name": "Austria",
@@ -59,8 +55,7 @@ const COUNTRY_DATA = {
 		 "south": 46.39347094,
 		 "west": 9.531168607,
 		 "east": 17.16009527,
-		 "land_area": 82445,
-		 "ratio": 0.4643738845
+		 "land_area": 82445
 	},
 	"au": {
 		 "name": "Australia",
@@ -68,8 +63,7 @@ const COUNTRY_DATA = {
 		 "south": -43.63681185,
 		 "west": 112.9205175,
 		 "east": 153.6390334,
-		 "land_area": 7633565,
-		 "ratio": 0.9101985631
+		 "land_area": 7633565
 	},
 	"au-cc": {
 		 "name": "Cocos (Keeling) Islands",
@@ -77,8 +71,7 @@ const COUNTRY_DATA = {
 		 "south": -12.2089472,
 		 "west": 96.81675357,
 		 "east": 96.92954142,
-		 "land_area": 14,
-		 "ratio": 0.02523953088
+		 "land_area": 14
 	},
 	"au-cx": {
 		 "name": "Christmas Island",
@@ -86,8 +79,7 @@ const COUNTRY_DATA = {
 		 "south": -10.57020359,
 		 "west": 105.5322588,
 		 "east": 105.7131899,
-		 "land_area": 135,
-		 "ratio": 0.08719876008
+		 "land_area": 135
 	},
 	"bd": {
 		 "name": "Bangladesh",
@@ -95,8 +87,7 @@ const COUNTRY_DATA = {
 		 "south": 21.64697616,
 		 "west": 88.00632566,
 		 "east": 92.69073515,
-		 "land_area": 134208,
-		 "ratio": 0.5052118219
+		 "land_area": 134208
 	},
 	"be": {
 		 "name": "Belgium",
@@ -104,8 +95,7 @@ const COUNTRY_DATA = {
 		 "south": 49.495234,
 		 "west": 2.536254936,
 		 "east": 6.403676881,
-		 "land_area": 30278,
-		 "ratio": 0.3858242736
+		 "land_area": 30278
 	},
 	"bg": {
 		 "name": "Bulgaria",
@@ -113,8 +103,7 @@ const COUNTRY_DATA = {
 		 "south": 41.25882192,
 		 "west": 22.35477079,
 		 "east": 28.63075566,
-		 "land_area": 108612,
-		 "ratio": 0.4872651762
+		 "land_area": 108612
 	},
 	"bm": {
 		 "name": "Bermuda",
@@ -122,8 +111,7 @@ const COUNTRY_DATA = {
 		 "south": 32.24446075,
 		 "west": -64.88819908,
 		 "east": -64.64577845,
-		 "land_area": 54,
-		 "ratio": 0.05766445979
+		 "land_area": 54
 	},
 	"bo": {
 		 "name": "Bolivia",
@@ -131,8 +119,7 @@ const COUNTRY_DATA = {
 		 "south": -22.94273969,
 		 "west": -69.60171421,
 		 "east": -57.48098151,
-		 "land_area": 1083301,
-		 "ratio": 0.6997347626
+		 "land_area": 1083301
 	},
 	"br": {
 		 "name": "Brazil",
@@ -140,8 +127,7 @@ const COUNTRY_DATA = {
 		 "south": -33.75530305,
 		 "west": -73.99930719,
 		 "east": -34.69972983,
-		 "land_area": 8460415,
-		 "ratio": 0.9220500423
+		 "land_area": 8460415
 	},
 	"bt": {
 		 "name": "Bhutan",
@@ -149,8 +135,7 @@ const COUNTRY_DATA = {
 		 "south": 26.74320972,
 		 "west": 88.78045654,
 		 "east": 92.10626734,
-		 "land_area": 38394,
-		 "ratio": 0.4037886667
+		 "land_area": 38394
 	},
 	"bw": {
 		 "name": "Botswana",
@@ -158,8 +143,7 @@ const COUNTRY_DATA = {
 		 "south": -26.89562101,
 		 "west": 19.9865959,
 		 "east": 29.37277305,
-		 "land_area": 566730,
-		 "ratio": 0.6360050321
+		 "land_area": 566730
 	},
 	"by": {
 		 "name": "Belarus",
@@ -167,8 +151,7 @@ const COUNTRY_DATA = {
 		 "south": 51.26672203,
 		 "west": 23.14891817,
 		 "east": 32.77758085,
-		 "land_area": 202900,
-		 "ratio": 0.5412019375
+		 "land_area": 202900
 	},
 	"ca": {
 		 "name": "Canada",
@@ -176,8 +159,7 @@ const COUNTRY_DATA = {
 		 "south": 41.94950483,
 		 "west": -141.0265531,
 		 "east": -52.60250313,
-		 "land_area": 9093507,
-		 "ratio": 0.9304116809
+		 "land_area": 9093507
 	},
 	"ch": {
 		 "name": "Switzerland",
@@ -185,8 +167,7 @@ const COUNTRY_DATA = {
 		 "south": 45.82918184,
 		 "west": 5.94201274,
 		 "east": 10.51766314,
-		 "land_area": 39997,
-		 "ratio": 0.4069240985
+		 "land_area": 39997
 	},
 	"cl": {
 		 "name": "Chile",
@@ -194,8 +175,7 @@ const COUNTRY_DATA = {
 		 "south": -55.71391897,
 		 "west": -75.60845382,
 		 "east": -66.59698614,
-		 "land_area": 743812,
-		 "ratio": 0.6623807309
+		 "land_area": 743812
 	},
 	"cn": {
 		 "name": "China",
@@ -203,8 +183,7 @@ const COUNTRY_DATA = {
 		 "south": 18.30546354,
 		 "west": 73.51780544,
 		 "east": 122.6614859,
-		 "land_area": 9326410,
-		 "ratio": 0.9333509715
+		 "land_area": 9326410
 	},
 	"cn-hk": {
 		 "name": "Hong Kong",
@@ -212,8 +191,7 @@ const COUNTRY_DATA = {
 		 "south": 22.18109379,
 		 "west": 113.8365559,
 		 "east": 114.4044117,
-		 "land_area": 1106,
-		 "ratio": 0.1780059121
+		 "land_area": 1106
 	},
 	"cn-mo": {
 		 "name": "Macau",
@@ -221,8 +199,7 @@ const COUNTRY_DATA = {
 		 "south": 22.11169942,
 		 "west": 113.5285942,
 		 "east": 113.5984604,
-		 "land_area": 28.2,
-		 "ratio": 0.04041105799
+		 "land_area": 28.2
 	},
 	"co": {
 		 "name": "Colombia",
@@ -230,8 +207,7 @@ const COUNTRY_DATA = {
 		 "south": -4.265380456,
 		 "west": -78.98742897,
 		 "east": -66.84822005,
-		 "land_area": 1038700,
-		 "ratio": 0.6955068695
+		 "land_area": 1038700
 	},
 	"cr": {
 		 "name": "Costa Rica",
@@ -239,8 +215,7 @@ const COUNTRY_DATA = {
 		 "south": 8.211166038,
 		 "west": -85.89772496,
 		 "east": -82.55343757,
-		 "land_area": 51060,
-		 "ratio": 0.4258952766
+		 "land_area": 51060
 	},
 	"cz": {
 		 "name": "Czech Republic",
@@ -248,8 +223,7 @@ const COUNTRY_DATA = {
 		 "south": 48.55611092,
 		 "west": 12.04351241,
 		 "east": 18.87369591,
-		 "land_area": 77187,
-		 "ratio": 0.4589827836
+		 "land_area": 77187
 	},
 	"de": {
 		 "name": "Germany",
@@ -257,8 +231,7 @@ const COUNTRY_DATA = {
 		 "south": 47.26612667,
 		 "west": 5.867770296,
 		 "east": 15.05007035,
-		 "land_area": 348672,
-		 "ratio": 0.59021931
+		 "land_area": 348672
 	},
 	"dk": {
 		 "name": "Denmark",
@@ -266,8 +239,7 @@ const COUNTRY_DATA = {
 		 "south": 54.55893089,
 		 "west": 8.058759197,
 		 "east": 12.79590635,
-		 "land_area": 42434,
-		 "ratio": 0.4114793293
+		 "land_area": 42434
 	},
 	"do": {
 		 "name": "Dominican Republic",
@@ -275,8 +247,7 @@ const COUNTRY_DATA = {
 		 "south": 17.59446606,
 		 "west": -72.01248137,
 		 "east": -68.28895103,
-		 "land_area": 48320,
-		 "ratio": 0.4215725412
+		 "land_area": 48320
 	},
 	"ec": {
 		 "name": "Ecuador",
@@ -284,8 +255,7 @@ const COUNTRY_DATA = {
 		 "south": -4.972956729,
 		 "west": -80.98650746,
 		 "east": -75.25334958,
-		 "land_area": 256369,
-		 "ratio": 0.5621178445
+		 "land_area": 256369
 	},
 	"ee": {
 		 "name": "Estonia",
@@ -293,8 +263,7 @@ const COUNTRY_DATA = {
 		 "south": 57.54178495,
 		 "west": 21.86914453,
 		 "east": 28.15332381,
-		 "land_area": 42388,
-		 "ratio": 0.4113955661
+		 "land_area": 42388
 	},
 	"eg": {
 		 "name": "Egypt",
@@ -302,8 +271,7 @@ const COUNTRY_DATA = {
 		 "south": 22.00064908,
 		 "west": 24.69124291,
 		 "east": 36.86183752,
-		 "land_area": 995450,
-		 "ratio": 0.6912429995
+		 "land_area": 995450
 	},
 	"es": {
 		 "name": "Spain",
@@ -311,8 +279,7 @@ const COUNTRY_DATA = {
 		 "south": 36.00775674,
 		 "west": -9.36406744,
 		 "east": 3.292490335,
-		 "land_area": 498980,
-		 "ratio": 0.6238390689
+		 "land_area": 498980
 	},
 	"fi": {
 		 "name": "Finland",
@@ -320,8 +287,7 @@ const COUNTRY_DATA = {
 		 "south": 59.8098925,
 		 "west": 20.56178657,
 		 "east": 31.62844596,
-		 "land_area": 303816,
-		 "ratio": 0.5775503027
+		 "land_area": 303816
 	},
 	"fo": {
 		 "name": "Faroe Islands",
@@ -329,8 +295,7 @@ const COUNTRY_DATA = {
 		 "south": 61.39137404,
 		 "west": -7.665612463,
 		 "east": -6.243975752,
-		 "land_area": 1393,
-		 "ratio": 0.1899181959
+		 "land_area": 1393
 	},
 	"fr": {
 		 "name": "France",
@@ -338,8 +303,7 @@ const COUNTRY_DATA = {
 		 "south": 42.31963189,
 		 "west": -4.784665045,
 		 "east": 8.234164328,
-		 "land_area": 543940,
-		 "ratio": 0.6320701743
+		 "land_area": 543940
 	},
 	"fr-re": {
 		 "name": "Réunion",
@@ -347,8 +311,7 @@ const COUNTRY_DATA = {
 		 "south": -21.39489059,
 		 "west": 55.20768701,
 		 "east": 55.83301217,
-		 "land_area": 2511,
-		 "ratio": 0.2220923911
+		 "land_area": 2511
 	},
 	"gb": {
 		 "name": "United Kingdom",
@@ -356,8 +319,7 @@ const COUNTRY_DATA = {
 		 "south": 49.96990343,
 		 "west": -8.189851793,
 		 "east": 1.773652892,
-		 "land_area": 241930,
-		 "ratio": 0.556897222
+		 "land_area": 241930
 	},
 	"gh": {
 		 "name": "Ghana",
@@ -365,8 +327,7 @@ const COUNTRY_DATA = {
 		 "south": 4.715042383,
 		 "west": -3.254050396,
 		 "east": 1.202019809,
-		 "land_area": 227533,
-		 "ratio": 0.5513983943
+		 "land_area": 227533
 	},
 	"gl": {
 		 "name": "Greenland",
@@ -374,8 +335,7 @@ const COUNTRY_DATA = {
 		 "south": 59.81925136,
 		 "west": -73.0670176,
 		 "east": -17.30041354,
-		 "land_area": 2166086,
-		 "ratio": 0.7712601353
+		 "land_area": 2166086
 	},
 	"gr": {
 		 "name": "Greece",
@@ -383,8 +343,7 @@ const COUNTRY_DATA = {
 		 "south": 34.90425795,
 		 "west": 19.94148847,
 		 "east": 26.68180124,
-		 "land_area": 130647,
-		 "ratio": 0.5029131146
+		 "land_area": 130647
 	},
 	"gt": {
 		 "name": "Guatemala",
@@ -392,8 +351,7 @@ const COUNTRY_DATA = {
 		 "south": 13.73492657,
 		 "west": -92.21259312,
 		 "east": -88.25389245,
-		 "land_area": 107159,
-		 "ratio": 0.4861339191
+		 "land_area": 107159
 	},
 	"hr": {
 		 "name": "Croatia",
@@ -401,8 +359,7 @@ const COUNTRY_DATA = {
 		 "south": 42.42445615,
 		 "west": 13.49181827,
 		 "east": 19.43295092,
-		 "land_area": 55974,
-		 "ratio": 0.4331456216
+		 "land_area": 55974
 	},
 	"hu": {
 		 "name": "Hungary",
@@ -410,8 +367,7 @@ const COUNTRY_DATA = {
 		 "south": 45.7103333,
 		 "west": 16.07901864,
 		 "east": 22.92371549,
-		 "land_area": 89608,
-		 "ratio": 0.4712345264
+		 "land_area": 89608
 	},
 	"id": {
 		 "name": "Indonesia",
@@ -419,8 +375,7 @@ const COUNTRY_DATA = {
 		 "south": -11.04394817,
 		 "west": 95.0703069,
 		 "east": 125.2677185,
-		 "land_area": 1811569,
-		 "ratio": 0.7524778859
+		 "land_area": 1811569
 	},
 	"ie": {
 		 "name": "Ireland",
@@ -428,8 +383,7 @@ const COUNTRY_DATA = {
 		 "south": 51.42441711,
 		 "west": -10.51546622,
 		 "east": -6.007144907,
-		 "land_area": 68883,
-		 "ratio": 0.449745526
+		 "land_area": 68883
 	},
 	"il": {
 		 "name": "Israel / Palestine",
@@ -437,8 +391,7 @@ const COUNTRY_DATA = {
 		 "south": 29.48525894,
 		 "west": 34.20635389,
 		 "east": 35.91548053,
-		 "land_area": 26330,
-		 "ratio": 0.3754465695
+		 "land_area": 26330
 	},
 	"in": {
 		 "name": "India",
@@ -446,8 +399,7 @@ const COUNTRY_DATA = {
 		 "south": 7.99239616,
 		 "west": 68.14242382,
 		 "east": 97.03765189,
-		 "land_area": 2973190,
-		 "ratio": 0.8051116267
+		 "land_area": 2973190
 	},
 	"is": {
 		 "name": "Iceland",
@@ -455,8 +407,7 @@ const COUNTRY_DATA = {
 		 "south": 63.37601603,
 		 "west": -24.51365907,
 		 "east": -13.51096881,
-		 "land_area": 100250,
-		 "ratio": 0.4805552996
+		 "land_area": 100250
 	},
 	"it": {
 		 "name": "Italy",
@@ -464,8 +415,7 @@ const COUNTRY_DATA = {
 		 "south": 36.61106444,
 		 "west": 6.569713105,
 		 "east": 18.58082347,
-		 "land_area": 294140,
-		 "ratio": 0.5745926024
+		 "land_area": 294140
 	},
 	"jo": {
 		 "name": "Jordan",
@@ -473,8 +423,7 @@ const COUNTRY_DATA = {
 		 "south": 29.18990168,
 		 "west": 34.95571111,
 		 "east": 36.5529455,
-		 "land_area": 88802,
-		 "ratio": 0.4704880484
+		 "land_area": 88802
 	},
 	"jp": {
 		 "name": "Japan",
@@ -482,8 +431,7 @@ const COUNTRY_DATA = {
 		 "south": 31.12402243,
 		 "west": 129.6351583,
 		 "east": 145.8637222,
-		 "land_area": 364546,
-		 "ratio": 0.5943445688
+		 "land_area": 364546
 	},
 	"ke": {
 		 "name": "Kenya",
@@ -491,8 +439,7 @@ const COUNTRY_DATA = {
 		 "south": -4.757791572,
 		 "west": 33.90454501,
 		 "east": 41.57488448,
-		 "land_area": 569140,
-		 "ratio": 0.6364125443
+		 "land_area": 569140
 	},
 	"kg": {
 		 "name": "Kyrgyzstan",
@@ -500,8 +447,7 @@ const COUNTRY_DATA = {
 		 "south": 39.22080697,
 		 "west": 69.27635176,
 		 "east": 80.22693287,
-		 "land_area": 191801,
-		 "ratio": 0.5362307418
+		 "land_area": 191801
 	},
 	"kh": {
 		 "name": "Cambodia",
@@ -509,8 +455,7 @@ const COUNTRY_DATA = {
 		 "south": 10.3766962,
 		 "west": 102.2807174,
 		 "east": 107.6513765,
-		 "land_area": 176515,
-		 "ratio": 0.5289333892
+		 "land_area": 176515
 	},
 	"kr": {
 		 "name": "South Korea",
@@ -518,8 +463,7 @@ const COUNTRY_DATA = {
 		 "south": 33.17174024,
 		 "west": 125.9048119,
 		 "east": 129.5909189,
-		 "land_area": 99909,
-		 "ratio": 0.4802709589
+		 "land_area": 99909
 	},
 	"la": {
 		 "name": "Laos",
@@ -527,8 +471,7 @@ const COUNTRY_DATA = {
 		 "south": 13.9505485,
 		 "west": 100.0758448,
 		 "east": 107.622867,
-		 "land_area": 230800,
-		 "ratio": 0.5526736898
+		 "land_area": 230800
 	},
 	"lb": {
 		 "name": "Lebanon",
@@ -536,8 +479,7 @@ const COUNTRY_DATA = {
 		 "south": 33.0497147,
 		 "west": 35.09018273,
 		 "east": 36.61315206,
-		 "land_area": 10230,
-		 "ratio": 0.3089418998
+		 "land_area": 10230
 	},
 	"lk": {
 		 "name": "Sri Lanka",
@@ -545,8 +487,7 @@ const COUNTRY_DATA = {
 		 "south": 5.889733032,
 		 "west": 79.72192265,
 		 "east": 81.88999015,
-		 "land_area": 62732,
-		 "ratio": 0.4422247101
+		 "land_area": 62732
 	},
 	"ls": {
 		 "name": "Lesotho",
@@ -554,8 +495,7 @@ const COUNTRY_DATA = {
 		 "south": -30.70565852,
 		 "west": 27.02474456,
 		 "east": 29.48374332,
-		 "land_area": 30355,
-		 "ratio": 0.3860142422
+		 "land_area": 30355
 	},
 	"lt": {
 		 "name": "Lithuania",
@@ -563,8 +503,7 @@ const COUNTRY_DATA = {
 		 "south": 53.89135116,
 		 "west": 21.00248606,
 		 "east": 26.8302643,
-		 "land_area": 62680,
-		 "ratio": 0.4421583173
+		 "land_area": 62680
 	},
 	"lu": {
 		 "name": "Luxembourg",
@@ -572,8 +511,7 @@ const COUNTRY_DATA = {
 		 "south": 49.45224747,
 		 "west": 5.72789945,
 		 "east": 6.547106711,
-		 "land_area": 2586,
-		 "ratio": 0.2237654538
+		 "land_area": 2586
 	},
 	"lv": {
 		 "name": "Latvia",
@@ -581,8 +519,7 @@ const COUNTRY_DATA = {
 		 "south": 55.68037798,
 		 "west": 20.94803271,
 		 "east": 28.22757065,
-		 "land_area": 62249,
-		 "ratio": 0.4416060863
+		 "land_area": 62249
 	},
 	"mc": {
 		 "name": "Monaco",
@@ -590,8 +527,7 @@ const COUNTRY_DATA = {
 		 "south": 43.72470548,
 		 "west": 7.409180154,
 		 "east": 7.439947269,
-		 "land_area": 2.02,
-		 "ratio": 0.001791491494
+		 "land_area": 2.02
 	},
 	"me": {
 		 "name": "Montenegro",
@@ -599,8 +535,7 @@ const COUNTRY_DATA = {
 		 "south": 41.84422529,
 		 "west": 18.42918589,
 		 "east": 20.35724277,
-		 "land_area": 13452,
-		 "ratio": 0.3275366735
+		 "land_area": 13452
 	},
 	"mg": {
 		 "name": "Madagascar",
@@ -608,8 +543,7 @@ const COUNTRY_DATA = {
 		 "south": -25.60939592,
 		 "west": 43.23581985,
 		 "east": 50.47387894,
-		 "land_area": 581540,
-		 "ratio": 0.6384843935
+		 "land_area": 581540
 	},
 	"mk": {
 		 "name": "North Macedonia",
@@ -617,8 +551,7 @@ const COUNTRY_DATA = {
 		 "south": 40.86504837,
 		 "west": 20.41705537,
 		 "east": 23.02727359,
-		 "land_area": 25433,
-		 "ratio": 0.3728938549
+		 "land_area": 25433
 	},
 	"mn": {
 		 "name": "Mongolia",
@@ -626,8 +559,7 @@ const COUNTRY_DATA = {
 		 "south": 41.51381968,
 		 "west": 87.78362906,
 		 "east": 119.8971025,
-		 "land_area": 1553556,
-		 "ratio": 0.7365164966
+		 "land_area": 1553556
 	},
 	"mt": {
 		 "name": "Malta",
@@ -635,8 +567,7 @@ const COUNTRY_DATA = {
 		 "south": 35.80389283,
 		 "west": 14.18345371,
 		 "east": 14.57187905,
-		 "land_area": 316,
-		 "ratio": 0.1200566714
+		 "land_area": 316
 	},
 	"mx": {
 		 "name": "Mexico",
@@ -644,8 +575,7 @@ const COUNTRY_DATA = {
 		 "south": 14.52060128,
 		 "west": -117.1648382,
 		 "east": -86.72334365,
-		 "land_area": 1943945,
-		 "ratio": 0.7598616872
+		 "land_area": 1943945
 	},
 	"my": {
 		 "name": "Malaysia",
@@ -653,8 +583,7 @@ const COUNTRY_DATA = {
 		 "south": 0.8039028511,
 		 "west": 99.90950991,
 		 "east": 119.3502578,
-		 "land_area": 329613,
-		 "ratio": 0.5850312711
+		 "land_area": 329613
 	},
 	"ng": {
 		 "name": "Nigeria",
@@ -662,8 +591,7 @@ const COUNTRY_DATA = {
 		 "south": 4.24506251,
 		 "west": 2.611301065,
 		 "east": 14.57480125,
-		 "land_area": 910768,
-		 "ratio": 0.6823720207
+		 "land_area": 910768
 	},
 	"nl": {
 		 "name": "Netherlands",
@@ -671,8 +599,7 @@ const COUNTRY_DATA = {
 		 "south": 50.73795542,
 		 "west": 3.330877652,
 		 "east": 7.284546489,
-		 "land_area": 33893,
-		 "ratio": 0.3943051996
+		 "land_area": 33893
 	},
 	"nl-cw": {
 		 "name": "Curaçao",
@@ -680,8 +607,7 @@ const COUNTRY_DATA = {
 		 "south": 12.04595945,
 		 "west": -69.16478463,
 		 "east": -68.73631786,
-		 "land_area": 444,
-		 "ratio": 0.1346630815
+		 "land_area": 444
 	},
 	"no": {
 		 "name": "Norway",
@@ -689,8 +615,7 @@ const COUNTRY_DATA = {
 		 "south": 57.93758043,
 		 "west": 4.705702972,
 		 "east": 31.12742212,
-		 "land_area": 304282,
-		 "ratio": 0.5776905471
+		 "land_area": 304282
 	},
 	"nz": {
 		 "name": "New Zealand",
@@ -698,8 +623,15 @@ const COUNTRY_DATA = {
 		 "south": -47.31335316,
 		 "west": 166.4018386,
 		 "east": 178.552306,
-		 "land_area": 262443,
-		 "ratio": 0.5642335645
+		 "land_area": 262443
+	},
+	"py": {
+		 "name": "Paraguay",
+		 "north": -19.21430026,
+		 "south": -27.62013417,
+		 "west": -62.68873672,
+		 "east": -54.24873466,
+		 "land_area": 406796
 	},
 	"pe": {
 		 "name": "Peru",
@@ -707,8 +639,7 @@ const COUNTRY_DATA = {
 		 "south": -18.30899206,
 		 "west": -81.50004403,
 		 "east": -68.71195892,
-		 "land_area": 1279996,
-		 "ratio": 0.7166391278
+		 "land_area": 1279996
 	},
 	"ph": {
 		 "name": "Philippines",
@@ -716,8 +647,7 @@ const COUNTRY_DATA = {
 		 "south": 5.495857892,
 		 "west": 117.0449048,
 		 "east": 126.4778484,
-		 "land_area": 298170,
-		 "ratio": 0.575835196
+		 "land_area": 298170
 	},
 	"pk": {
 		 "name": "Pakistan",
@@ -725,8 +655,7 @@ const COUNTRY_DATA = {
 		 "south": 23.737347,
 		 "west": 60.87992168,
 		 "east": 75.35990121,
-		 "land_area": 856690,
-		 "ratio": 0.6762976714
+		 "land_area": 856690
 	},
 	"pl": {
 		 "name": "Poland",
@@ -734,8 +663,7 @@ const COUNTRY_DATA = {
 		 "south": 48.99501037,
 		 "west": 14.12126559,
 		 "east": 23.97173198,
-		 "land_area": 311888,
-		 "ratio": 0.5799520737
+		 "land_area": 311888
 	},
 	"pt": {
 		 "name": "Portugal",
@@ -743,8 +671,7 @@ const COUNTRY_DATA = {
 		 "south": 36.91188194,
 		 "west": -9.457776085,
 		 "east": -6.183850515,
-		 "land_area": 91119,
-		 "ratio": 0.4726175839
+		 "land_area": 91119
 	},
 	"ro": {
 		 "name": "Romania",
@@ -752,8 +679,7 @@ const COUNTRY_DATA = {
 		 "south": 43.58977293,
 		 "west": 20.29672002,
 		 "east": 29.71985063,
-		 "land_area": 231291,
-		 "ratio": 0.5528639192
+		 "land_area": 231291
 	},
 	"rs": {
 		 "name": "Serbia",
@@ -761,8 +687,7 @@ const COUNTRY_DATA = {
 		 "south": 42.25436943,
 		 "west": 18.81469819,
 		 "east": 22.9726916,
-		 "land_area": 88246,
-		 "ratio": 0.4699694972
+		 "land_area": 88246
 	},
 	"ru": {
 		 "name": "Russia",
@@ -770,8 +695,7 @@ const COUNTRY_DATA = {
 		 "south": 41.17168671,
 		 "west": 27.42359493,
 		 "east": 163.2450453,
-		 "land_area": 16378410,
-		 "ratio": 1
+		 "land_area": 16378410
 	},
 	"rw": {
 		 "name": "Rwanda",
@@ -779,8 +703,7 @@ const COUNTRY_DATA = {
 		 "south": -2.829860301,
 		 "west": 28.8448363,
 		 "east": 30.91026587,
-		 "land_area": 24668,
-		 "ratio": 0.3706518377
+		 "land_area": 24668
 	},
 	"se": {
 		 "name": "Sweden",
@@ -788,8 +711,7 @@ const COUNTRY_DATA = {
 		 "south": 55.27891216,
 		 "west": 10.96052798,
 		 "east": 24.01161909,
-		 "land_area": 410335,
-		 "ratio": 0.6053778583
+		 "land_area": 410335
 	},
 	"sg": {
 		 "name": "Singapore",
@@ -797,8 +719,7 @@ const COUNTRY_DATA = {
 		 "south": 1.223905192,
 		 "west": 103.6024208,
 		 "east": 104.0897444,
-		 "land_area": 716,
-		 "ratio": 0.1566032496
+		 "land_area": 716
 	},
 	"si": {
 		 "name": "Slovenia",
@@ -806,8 +727,7 @@ const COUNTRY_DATA = {
 		 "south": 45.41655764,
 		 "west": 13.35455526,
 		 "east": 16.57071693,
-		 "land_area": 20151,
-		 "ratio": 0.3559749085
+		 "land_area": 20151
 	},
 	"sk": {
 		 "name": "Slovakia",
@@ -815,8 +735,7 @@ const COUNTRY_DATA = {
 		 "south": 47.71417794,
 		 "west": 16.81150182,
 		 "east": 22.61228257,
-		 "land_area": 48105,
-		 "ratio": 0.4212240051
+		 "land_area": 48105
 	},
 	"sm": {
 		 "name": "San Marino",
@@ -824,8 +743,7 @@ const COUNTRY_DATA = {
 		 "south": 43.89332781,
 		 "west": 12.40196922,
 		 "east": 12.5165547,
-		 "land_area": 61,
-		 "ratio": 0.06124236192
+		 "land_area": 61
 	},
 	"sn": {
 		 "name": "Senegal",
@@ -833,8 +751,7 @@ const COUNTRY_DATA = {
 		 "south": 12.28883312,
 		 "west": -17.5225026,
 		 "east": -11.35385134,
-		 "land_area": 192530,
-		 "ratio": 0.5365652587
+		 "land_area": 192530
 	},
 	"sz": {
 		 "name": "Eswatini",
@@ -842,8 +759,7 @@ const COUNTRY_DATA = {
 		 "south": -27.33095704,
 		 "west": 30.77601946,
 		 "east": 32.13252615,
-		 "land_area": 17204,
-		 "ratio": 0.34470765
+		 "land_area": 17204
 	},
 	"th": {
 		 "name": "Thailand",
@@ -851,8 +767,7 @@ const COUNTRY_DATA = {
 		 "south": 5.745117138,
 		 "west": 97.37099072,
 		 "east": 105.6672804,
-		 "land_area": 510890,
-		 "ratio": 0.6260842156
+		 "land_area": 510890
 	},
 	"tn": {
 		 "name": "Tunisia",
@@ -860,8 +775,7 @@ const COUNTRY_DATA = {
 		 "south": 30.25486215,
 		 "west": 7.543016212,
 		 "east": 11.58941935,
-		 "land_area": 155360,
-		 "ratio": 0.5178140396
+		 "land_area": 155360
 	},
 	"tr": {
 		 "name": "Turkey",
@@ -869,8 +783,7 @@ const COUNTRY_DATA = {
 		 "south": 36.00298054,
 		 "west": 25.96243462,
 		 "east": 44.69783547,
-		 "land_area": 769632,
-		 "ratio": 0.6657287307
+		 "land_area": 769632
 	},
 	"tw": {
 		 "name": "Taiwan",
@@ -878,8 +791,7 @@ const COUNTRY_DATA = {
 		 "south": 21.8788848,
 		 "west": 120.0476275,
 		 "east": 122.0064736,
-		 "land_area": 32260,
-		 "ratio": 0.3905807359
+		 "land_area": 32260
 	},
 	"ua": {
 		 "name": "Ukraine",
@@ -887,8 +799,7 @@ const COUNTRY_DATA = {
 		 "south": 45.11523978,
 		 "west": 22.1340966,
 		 "east": 40.28132805,
-		 "land_area": 579300,
-		 "ratio": 0.6381131661
+		 "land_area": 579300
 	},
 	"ug": {
 		 "name": "Uganda",
@@ -896,8 +807,7 @@ const COUNTRY_DATA = {
 		 "south": -1.488100493,
 		 "west": 29.56277939,
 		 "east": 35.03397044,
-		 "land_area": 197100,
-		 "ratio": 0.5386361879
+		 "land_area": 197100
 	},
 	"us": {
 		 "name": "United States",
@@ -905,8 +815,7 @@ const COUNTRY_DATA = {
 		 "south": 24.52806746,
 		 "west": -124.6113815,
 		 "east": -66.70721851,
-		 "land_area": 9147593,
-		 "ratio": 0.9311004994
+		 "land_area": 9147593
 	},
 	"us-ak": {
 		 "name": "Alaska",
@@ -914,8 +823,7 @@ const COUNTRY_DATA = {
 		 "south": 54.76605412,
 		 "west": -151.1088192,
 		 "east": -130.5851462,
-		 "land_area": 1481346,
-		 "ratio": 0.7316068287
+		 "land_area": 1481346
 	},
 	"us-as": {
 		 "name": "American Samoa",
@@ -923,8 +831,7 @@ const COUNTRY_DATA = {
 		 "south": -14.36996814,
 		 "west": -170.8432198,
 		 "east": -170.5589486,
-		 "land_area": 199,
-		 "ratio": 0.1015400652
+		 "land_area": 199
 	},
 	"us-gu": {
 		 "name": "Guam",
@@ -932,8 +839,7 @@ const COUNTRY_DATA = {
 		 "south": 13.24210526,
 		 "west": 144.6278356,
 		 "east": 144.9571884,
-		 "land_area": 544,
-		 "ratio": 0.1437870744
+		 "land_area": 544
 	},
 	"us-hi": {
 		 "name": "Hawaii",
@@ -941,8 +847,7 @@ const COUNTRY_DATA = {
 		 "south": 18.92355929,
 		 "west": -159.7709846,
 		 "east": -154.8193427,
-		 "land_area": 16638,
-		 "ratio": 0.3423469939
+		 "land_area": 16638
 	},
 	"us-mp": {
 		 "name": "Northern Mariana Islands",
@@ -950,8 +855,7 @@ const COUNTRY_DATA = {
 		 "south": 15.09140846,
 		 "west": 145.691203,
 		 "east": 145.8315142,
-		 "land_area": 464,
-		 "ratio": 0.1366167783
+		 "land_area": 464
 	},
 	"us-pr": {
 		 "name": "Puerto Rico",
@@ -959,8 +863,7 @@ const COUNTRY_DATA = {
 		 "south": 17.93328144,
 		 "west": -67.29242475,
 		 "east": -65.60602349,
-		 "land_area": 9104,
-		 "ratio": 0.3011875134
+		 "land_area": 9104
 	},
 	"us-vi": {
 		 "name": "U.S. Virgin Islands",
@@ -968,8 +871,7 @@ const COUNTRY_DATA = {
 		 "south": 17.67634238,
 		 "west": -65.03994781,
 		 "east": -64.56616244,
-		 "land_area": 346,
-		 "ratio": 0.1238700866
+		 "land_area": 346
 	},
 	"uy": {
 		 "name": "Uruguay",
@@ -977,8 +879,7 @@ const COUNTRY_DATA = {
 		 "south": -34.98685304,
 		 "west": -58.49849656,
 		 "east": -53.12099754,
-		 "land_area": 175015,
-		 "ratio": 0.5281863724
+		 "land_area": 175015
 	},
 	"vt": {
 		 "name": "Vietnam",
@@ -986,8 +887,7 @@ const COUNTRY_DATA = {
 		 "south": 8.522110103,
 		 "west": 102.139432,
 		 "east": 109.4782987,
-		 "land_area": 310070,
-		 "ratio": 0.5794161764
+		 "land_area": 310070
 	},
 	"za": {
 		 "name": "South Africa",
@@ -995,8 +895,7 @@ const COUNTRY_DATA = {
 		 "south": -34.83846031,
 		 "west": 16.37467323,
 		 "east": 32.92982033,
-		 "land_area": 1214470,
-		 "ratio": 0.7112931661
+		 "land_area": 1214470
 	}
 }
 
@@ -1163,8 +1062,11 @@ const calcTotalScore = () => {
 		debug.style.display = 'flex';
 		return;
 	}
+
+	const MAX_AREA = 16378410;
+	let ratio = Math.pow(Math.log2(COUNTRY_DATA[data.targetCC].land_area) / Math.log2(MAX_AREA), 2);
 	
-	const RATIO_COUNTRY = COUNTRY_DATA[data.targetCC].ratio * 0.4 + 0.3;
+	const RATIO_COUNTRY = ratio * 0.4 + 0.3;
 	const RATIO_GEOGUESSR = 1 - RATIO_COUNTRY;
 
 	let scoreGeo = 5000 * RATIO_GEOGUESSR * data.scoreGeoguessr || 0;
